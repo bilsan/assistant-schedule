@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: App
+Bundle-SymbolicName: ru.kai.assistantschedule.app; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: ru.kai.assistantschedule.app.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ ru.kai.assistantschedule.setting;bundle-version="1.0.0",
+ ru.kai.assistantschedule.processing;bundle-version="1.0.0",
+ ru.kai.assistantschedule.status;bundle-version="1.0.0",
+ ru.kai.assistantschedule.core;bundle-version="1.0.0",
+ ru.kai.assistantschedule.libs;bundle-version="1.0.0",
+ ru.kai.assistantschedule.logger;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

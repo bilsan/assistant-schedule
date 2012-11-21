@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="AssistantSchedule" uid="ru.kai.assistantschedule.app.product" id="ru.kai.assistantschedule.app.product" application="ru.kai.assistantschedule.app.application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgs>-Dlog4j.configuration=file:configuration\\log4j.xml</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/ru.kai.assistantschedule.app/icons/alt_window_16.gif" i32="/ru.kai.assistantschedule.app/icons/alt_window_32.gif"/>
+
+
+   <launcher name="assistantschedule">
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+   </vm>
+
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="ru.kai.assistantschedule.feature" version="1.0.0.qualifier"/>
+      <feature id="org.eclipse.rcp" version="3.8.1.v20120814-105048-92BmGJlFw3Ez0WZ9TxCqgcSVAE"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+   </configurations>
+
+</product>

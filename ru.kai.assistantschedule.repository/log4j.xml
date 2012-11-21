@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+
+    <!-- ============================================================================ -->
+    <!-- Логирование в файлы с разбиением на дни, часы, минуты                        -->
+    <!-- ============================================================================ -->
+    <appender name="Kai" class="org.apache.log4j.RollingFileAppender">
+        <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+
+        <param name="File" value="${user.home}/.assistantschedule/kai.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="MaxBackupIndex" value="10"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss,SSS} | %-5p | %C{1}.%M[%L] %x | %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- ============================================================================ -->
+    <!-- Консоль                                                                      -->
+    <!-- ============================================================================ -->
+    <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+        <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss,SSS} | %-5p | %C{1}.%M[%L] %x | %m%n"/>
+        </layout>
+    </appender>
+
+
+    <!-- ============================================================================ -->
+    <!-- Логирование полный лог                                                       -->
+    <!-- ============================================================================ -->
+    <appender name="FullLog" class="org.apache.log4j.RollingFileAppender">
+        <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+
+        <param name="File" value="${user.home}/.assistantschedule/assistantschedule.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="MaxBackupIndex" value="10"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss,SSS} | %-5p | %C{1}.%M[%L] %x | %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="org.jboss">
+        <level value="DEBUG"/>
+    </logger> 
+
+    <logger name="org">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="ru">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="com">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="ru.kai">
+        <level value="DEBUG"/>
+        <appender-ref ref="FullLog"/>
+        <appender-ref ref="Console"/>
+        <appender-ref ref="Kai"/>
+    </logger>
+
+    <logger name="org.acoveo">
+        <level value="DEBUG"/>
+        <appender-ref ref="FullLog"/>
+        <appender-ref ref="Console"/>
+        <appender-ref ref="Kai"/>
+    </logger>	
+
+    <root>
+        <appender-ref ref="FullLog"/>
+    </root>
+
+</log4j:configuration>

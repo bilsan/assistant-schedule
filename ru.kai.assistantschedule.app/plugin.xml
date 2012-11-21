@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="ru.kai.assistantschedule.app.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="ru.kai.assistantschedule.app.ui.toolbar.Toolbar">
+            <dynamic
+                  class="ru.kai.assistantschedule.app.ui.toolbar.ApplicationToolbar"
+                  id="ru.kai.assistantschedule.app.ui.toolbar.ApplicationToolbar">
+            </dynamic>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="ru.kai.assistantschedule.app.application"
+            name="AssistantSchedule">
+         <property
+               name="appName"
+               value="AssistantSchedule">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/alt_window_16.gif,icons/alt_window_32.gif">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

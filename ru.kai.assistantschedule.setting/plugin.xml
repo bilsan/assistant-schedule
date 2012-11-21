@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="ru.kai.assistantschedule.setting.internal.SettingPerspective"
+            icon="icons/settings.png"
+            id="ru.kai.assistantschedule.setting.perspective"
+            name="Настройки">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="Настройки/Подключение"
+            class="ru.kai.assistantschedule.setting.SettingView"
+            id="ru.kai.assistantschedule.setting.view">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="ru.kai.assistantschedule.setting.perspective">
+         <view
+               closeable="false"
+               id="ru.kai.assistantschedule.setting.view"
+               relationship="stack"
+               relative="mainFolder"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

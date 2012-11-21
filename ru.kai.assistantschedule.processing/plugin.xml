@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="ru.kai.assistantschedule.processing.internal.ProcessingPerspective"
+            icon="icons/processing.png"
+            id="ru.kai.assistantschedule.processing.perspective"
+            name="Обработки">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="Обработки"
+            class="ru.kai.assistantschedule.processing.ProcessingView"
+            id="ru.kai.assistantschedule.processing.view">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="ru.kai.assistantschedule.processing.perspective">
+         <view
+               closeable="false"
+               id="ru.kai.assistantschedule.processing.view"
+               relationship="stack"
+               relative="mainFolder"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>
