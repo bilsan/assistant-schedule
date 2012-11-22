@@ -9,3 +9,6 @@
 7. Если все прошло успешно и проект собрался, то в папке ru.kai.assistantschedule.repository, рядом с папкой target, 
 появится папка assistant_schedule_app. Внутри её находиться assistantschedule.exe!
 Все можно ее запускать!
+
+Полезные ссылки:
+http://www.modumind.com/2012/11/12/rcp-best-practices-get-your-product-building-right-away/
