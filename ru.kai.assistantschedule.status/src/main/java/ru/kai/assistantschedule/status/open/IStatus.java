@@ -8,7 +8,7 @@ import org.eclipse.swt.graphics.Font;
 
 /**
  * @author Роман
- *
+ * Консоль
  */
 public interface IStatus {
 
