@@ -12,3 +12,5 @@
 
 Полезные ссылки:
 http://www.modumind.com/2012/11/12/rcp-best-practices-get-your-product-building-right-away/
+
+Коммит!
