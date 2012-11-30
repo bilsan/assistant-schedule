@@ -1,5 +1,5 @@
 package ru.kai.assistantschedule.core.calendar;
 
-public enum FormOfClass {
+public enum LessonType {
 	LEC, PRAC, LABS;
 }

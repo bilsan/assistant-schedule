@@ -23,7 +23,7 @@ public class Day {
 		return dateOfTheDay.getTime().toString();
 	}
 
-	public void addClass(Time t, String audit, String disc, FormOfClass FoC, String prepod, String kaf, String groups ){
+	public void addClass(Time t, String audit, String disc, LessonType FoC, String prepod, String kaf, String groups ){
 		classes.add(new Class(t, audit, disc, FoC, groups, prepod, kaf));
 	}
 

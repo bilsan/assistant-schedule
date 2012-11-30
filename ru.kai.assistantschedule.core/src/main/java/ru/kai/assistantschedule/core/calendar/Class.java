@@ -1,30 +1,33 @@
 package ru.kai.assistantschedule.core.calendar;
 
 public class Class {
-	public Class(Time t, String au, String disc, FormOfClass FoC, String groups, String prep, String kaf){
-		this.time = t;
-		this.classRoom = au;
-		this.discipline = disc;
-		this.formOfClass = FoC;
-		this.groups = groups;
-		this.prepodavatel = prep;
-		this.kafedra = kaf;
+	
+	
+	public Class(Time time, String lectureRoom, String discipline, 
+			LessonType lessonType, String group, String professor, String department){
+		this.time = time;
+		this.lectureRoom = lectureRoom;
+		this.discipline = discipline;
+		this.lessonType = lessonType;
+		this.group = group;
+		this.professor = professor;
+		this.department = department;
 	}
 	
 	public Time time;
-	public FormOfClass formOfClass;
-	public String discipline, groups, prepodavatel, classRoom, kafedra;
+	public LessonType lessonType;
+	public String discipline, group, professor, lectureRoom, department;
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((classRoom == null) ? 0 : classRoom.hashCode());
+		result = prime * result + ((lectureRoom == null) ? 0 : lectureRoom.hashCode());
 		result = prime * result + ((discipline == null) ? 0 : discipline.hashCode());
-		result = prime * result + ((formOfClass == null) ? 0 : formOfClass.hashCode());
-		result = prime * result + ((groups == null) ? 0 : groups.hashCode());
-		result = prime * result + ((kafedra == null) ? 0 : kafedra.hashCode());
-		result = prime * result + ((prepodavatel == null) ? 0 : prepodavatel.hashCode());
+		result = prime * result + ((lessonType == null) ? 0 : lessonType.hashCode());
+		result = prime * result + ((group == null) ? 0 : group.hashCode());
+		result = prime * result + ((department == null) ? 0 : department.hashCode());
+		result = prime * result + ((professor == null) ? 0 : professor.hashCode());
 		result = prime * result + ((time == null) ? 0 : time.hashCode());
 		return result;
 	}
@@ -41,11 +44,11 @@ public class Class {
 			return false;
 		}
 		Class other = (Class) obj;
-		if (classRoom == null) {
-			if (other.classRoom != null) {
+		if (lectureRoom == null) {
+			if (other.lectureRoom != null) {
 				return false;
 			}
-		} else if (!classRoom.equals(other.classRoom)) {
+		} else if (!lectureRoom.equals(other.lectureRoom)) {
 			return false;
 		}
 		if (discipline == null) {
@@ -55,28 +58,28 @@ public class Class {
 		} else if (!discipline.equals(other.discipline)) {
 			return false;
 		}
-		if (formOfClass != other.formOfClass) {
+		if (lessonType != other.lessonType) {
 			return false;
 		}
-		if (groups == null) {
-			if (other.groups != null) {
+		if (group == null) {
+			if (other.group != null) {
 				return false;
 			}
-		} else if (!groups.equals(other.groups)) {
+		} else if (!group.equals(other.group)) {
 			return false;
 		}
-		if (kafedra == null) {
-			if (other.kafedra != null) {
+		if (department == null) {
+			if (other.department != null) {
 				return false;
 			}
-		} else if (!kafedra.equals(other.kafedra)) {
+		} else if (!department.equals(other.department)) {
 			return false;
 		}
-		if (prepodavatel == null) {
-			if (other.prepodavatel != null) {
+		if (professor == null) {
+			if (other.professor != null) {
 				return false;
 			}
-		} else if (!prepodavatel.equals(other.prepodavatel)) {
+		} else if (!professor.equals(other.professor)) {
 			return false;
 		}
 		if (time != other.time) {

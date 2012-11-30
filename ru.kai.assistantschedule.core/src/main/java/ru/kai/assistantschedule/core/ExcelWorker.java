@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 
 import ru.kai.assistantschedule.core.calendar.Class;
-import ru.kai.assistantschedule.core.calendar.FormOfClass;
+import ru.kai.assistantschedule.core.calendar.LessonType;
 import ru.kai.assistantschedule.core.calendar.SemestrBuilder;
 import ru.kai.assistantschedule.core.calendar.Time;
 import ru.kai.assistantschedule.core.exceptions.SheduleIsNotOpenedException;
@@ -435,7 +435,7 @@ public class ExcelWorker {
 				Cell[] currentEntry =  sheetOfSchedule.getRow(i);
 				int day = convetToDayOfWeek(splitStr(currentEntry[1].getContents()));
 				Time time = convertToEnumTime(splitStr(currentEntry[2].getContents()));
-				FormOfClass FoC = convertToEnumFormOfClass(splitStr(currentEntry[5].getContents()));
+				LessonType FoC = convertToEnumFormOfClass(splitStr(currentEntry[5].getContents()));
 				String tmp = splitStr(currentEntry[3].getContents()).toLowerCase();
 				if(tmp.equals("") || Pattern.matches("чет/неч", tmp) || Pattern.matches("неч/чет", tmp) || Pattern.matches("ч.*/н.*", tmp) || Pattern.matches("н.*/ч.*", tmp)){
 					for(int j = 0; j < SB.semestr.size(); j++){//Бежим по неделям
@@ -452,11 +452,11 @@ public class ExcelWorker {
 								int l;
 								for(l = 0; l < classesSize; l++){
 									if(time == classes.get(l).time){//Время совпало???
-										if(splitStr(currentEntry[6].getContents()).equals(classes.get(l).classRoom)){//Аудитория совпала???
+										if(splitStr(currentEntry[6].getContents()).equals(classes.get(l).lectureRoom)){//Аудитория совпала???
 											if(splitStr(currentEntry[4].getContents()).equals(classes.get(l).discipline)){//Дисциплина совпала???
-												if(FoC == classes.get(l).formOfClass){//Форма занятия совпала?
-													if(splitStr(currentEntry[9].getContents()).equals(classes.get(l).prepodavatel)){//Преподаватель совпал???
-														classes.get(l).groups += ","+splitStr(currentEntry[0].getContents());
+												if(FoC == classes.get(l).lessonType){//Форма занятия совпала?
+													if(splitStr(currentEntry[9].getContents()).equals(classes.get(l).professor)){//Преподаватель совпал???
+														classes.get(l).group += ","+splitStr(currentEntry[0].getContents());
 														doubleAdd++;
 														break;
 													} else
@@ -517,13 +517,13 @@ public class ExcelWorker {
      * @param aFoC пр лек или л.р.
      * @return тип перечилсения FormOfClass либо null, если не найдет соответствия
      */
-	private static FormOfClass convertToEnumFormOfClass(String aFoC) {
+	private static LessonType convertToEnumFormOfClass(String aFoC) {
 		if(aFoC.equals("лек"))
-			return FormOfClass.LEC;
+			return LessonType.LEC;
 		else if(aFoC.equals("пр"))
-			return FormOfClass.PRAC;
+			return LessonType.PRAC;
 		else if(aFoC.equals("л.р."))
-			return FormOfClass.LABS;
+			return LessonType.LABS;
 		else return null;
 	}
 
