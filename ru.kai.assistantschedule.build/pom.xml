@@ -69,8 +69,10 @@
 		<module>../ru.kai.assistantschedule.repository</module>
 		<module>../ru.kai.assistantschedule.app</module>
 		<module>../ru.kai.assistantschedule.core</module>
+		<module>../ru.kai.assistantschedule.ui</module>
 		<module>../ru.kai.assistantschedule.libs</module>
 		<module>../ru.kai.assistantschedule.logger</module>
+		<module>../ru.kai.assistantschedule.reports</module>
 		<module>../ru.kai.assistantschedule.processing</module>
 		<module>../ru.kai.assistantschedule.setting</module>
 		<module>../ru.kai.assistantschedule.status</module>
