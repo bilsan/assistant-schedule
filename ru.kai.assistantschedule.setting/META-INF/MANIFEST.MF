@@ -6,8 +6,11 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: ru.kai.assistantschedule.setting.internal.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- ru.kai.assistantschedule.core;bundle-version="1.0.0",
  ru.kai.assistantschedule.logger;bundle-version="1.0.0",
- ru.kai.assistantschedule.status;bundle-version="1.0.0"
+ ru.kai.assistantschedule.status;bundle-version="1.0.0",
+ org.eclipse.nebula.widgets.grid;bundle-version="1.0.0",
+ ru.kai.assistantschedule.core;bundle-version="1.0.0",
+ org.eclipse.nebula.widgets.pshelf;bundle-version="1.0.0",
+ ru.kai.assistantschedule.ui;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

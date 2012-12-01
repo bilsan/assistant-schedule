@@ -6,11 +6,19 @@ import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Sash;
 import org.eclipse.swt.widgets.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,82 +33,111 @@ import ru.kai.assistantschedule.status.open.StatusImpl;
  * Date: 31.10.12
  * Time: 14:23
  */
+@Deprecated
 public class SettingsAndConnectionForm {
     
     protected static final Logger LOG = LoggerFactory.getLogger(SettingsAndConnectionForm.class);
     
+    /**
+     * Главный композит
+     */
+    private Composite _mainComposite;
+
+    private Composite _leftComposite;
+
+    private Composite _rightComposite;
+
+    /**
+     * Левая передвижная перегородка
+     */
+    private Sash _sash;
+    
     private CTabFolder folder;
     private CTabItem tabItem;
-    private Composite _mainComposite, _composite;
+    private Composite _composite;
     private Button loadSchedulleBtn, clearSchedulleBtn, loadLoadBtn, clearLoadBtn, AutoFillSettingsBtn;
     private Text schedullePathText, loadPathText, descForAutoFillSettingsBtn;
 
+    //Получаем экземпляр консоли, для вывода в него вспомогательной информации
     private IStatus status = StatusImpl.getInstance();
     
     public SettingsAndConnectionForm(Composite parent) {
+    	parent.setLayout(new FormLayout());
+    	Color color = new Color(Display.getCurrent(), 200, 0, 200);
+    	parent.setBackground(color);
+    	
         _mainComposite = new Composite(parent, SWT.NONE);
+        _mainComposite.setBackground(color);
+        _leftComposite = new Composite(_mainComposite, SWT.NONE);
+        _sash = new Sash(_mainComposite, SWT.VERTICAL);
+        _rightComposite = new Composite(_mainComposite, SWT.NONE);
 
-        folder = new CTabFolder(_mainComposite, SWT.NONE);
-		folder.setSimple(false);
-		folder.setBorderVisible(true);
-		folder.setSingle(false);
-		folder.setUnselectedImageVisible(true);
-
-        tabItem = new CTabItem(folder, SWT.NONE);
-		tabItem.setText("Настройка/подключение");
-
-        _composite = new Composite(folder, SWT.NONE);
-        tabItem.setControl(_composite);
-        folder.setSelection(tabItem);
+        color = new Color(Display.getCurrent(), 0, 120, 100);
+        _rightComposite.setBackground(color);
+        
+        ActivityTree downloadTree = new ActivityTree(_leftComposite);
+        
+//        folder = new CTabFolder(_mainComposite, SWT.NONE);
+//		folder.setSimple(false);
+//		folder.setBorderVisible(true);
+//		folder.setSingle(false);
+//		folder.setUnselectedImageVisible(true);
+//
+//        tabItem = new CTabItem(folder, SWT.NONE);
+//		tabItem.setText("Настройка/подключение");
+//
+//        _composite = new Composite(folder, SWT.NONE);
+//        tabItem.setControl(_composite);
+//        folder.setSelection(tabItem);
 
         /**
          * Кнопка загрузки расписания
          */
-        loadSchedulleBtn = new Button(_composite, SWT.PUSH);
-        loadSchedulleBtn.setText("Загрузить расписание");
+//        loadSchedulleBtn = new Button(_composite, SWT.PUSH);
+//        loadSchedulleBtn.setText("Загрузить расписание");
 
         /**
          * Путь до рассписания
          */
-        schedullePathText = new Text(_composite, SWT.READ_ONLY | SWT.LEFT | SWT.BORDER);
+//        schedullePathText = new Text(_composite, SWT.READ_ONLY | SWT.LEFT | SWT.BORDER);
 
         /**
          * Кнопка очистки расписания
          */
-        clearSchedulleBtn = new Button(_composite, SWT.PUSH);
-        clearSchedulleBtn.setText("X");
+//        clearSchedulleBtn = new Button(_composite, SWT.PUSH);
+//        clearSchedulleBtn.setText("X");
 
 
         /**
          * Кнопка загрузки нагрузки
          */
-        loadLoadBtn = new Button(_composite, SWT.PUSH);
-        loadLoadBtn.setText("Загрузить нагрузку");
+//        loadLoadBtn = new Button(_composite, SWT.PUSH);
+//        loadLoadBtn.setText("Загрузить нагрузку");
 
         /**
          * Путь до нагрузки
          */
-        loadPathText = new Text(_composite, SWT.READ_ONLY | SWT.LEFT | SWT.BORDER);
+//        loadPathText = new Text(_composite, SWT.READ_ONLY | SWT.LEFT | SWT.BORDER);
 
         /**
          * Кнопка очистки нагрузки
          */
-        clearLoadBtn = new Button(_composite, SWT.PUSH);
-        clearLoadBtn.setText("X");
+//        clearLoadBtn = new Button(_composite, SWT.PUSH);
+//        clearLoadBtn.setText("X");
 
 
         /**
          * Описание следующей кнопки для пользователя
          */
-        descForAutoFillSettingsBtn = new Text(_composite, SWT.READ_ONLY | SWT.RIGHT);
-        descForAutoFillSettingsBtn.setText("Настройки Автозаполнения аудиторий где указано каф ПМИ");
+//        descForAutoFillSettingsBtn = new Text(_composite, SWT.READ_ONLY | SWT.RIGHT);
+//        descForAutoFillSettingsBtn.setText("Настройки Автозаполнения аудиторий где указано каф ПМИ");
 
         /**
          * Кнопка настройки аудиторий для автозаполнения расписания, где будет
          * написано КАФ или ВЦ ПМИ
          */
-        AutoFillSettingsBtn = new Button(_composite, SWT.PUSH);
-        AutoFillSettingsBtn.setText("Открыть");
+//        AutoFillSettingsBtn = new Button(_composite, SWT.PUSH);
+//        AutoFillSettingsBtn.setText("Открыть");
 
 
         layout();
@@ -108,6 +145,44 @@ public class SettingsAndConnectionForm {
     }
 
     private void layout() {
+    	FormData formData;
+
+        formData = new FormData();
+        formData.left = new FormAttachment(0, 0);
+        formData.top = new FormAttachment(0, 0);
+        formData.right = new FormAttachment(100, 0);
+        formData.bottom = new FormAttachment(100, 0);
+        _mainComposite.setLayout(new FormLayout());
+        _mainComposite.setLayoutData(formData);
+
+        //Передвижная перегородка
+        formData = new FormData();
+        formData.left = new FormAttachment(0, 250);
+        formData.top = new FormAttachment(0, 0);
+        //formData.right = new FormAttachment(100, 0);
+        formData.bottom = new FormAttachment(100, 0);
+        _sash.setLayoutData(formData);
+
+        //Атрибуты
+        formData = new FormData();
+        formData.left = new FormAttachment(0, 0);
+        formData.top = new FormAttachment(0, 0);
+        formData.right = new FormAttachment(_sash, 0);
+        formData.bottom = new FormAttachment(100, 0);
+        _leftComposite.setLayout(new FormLayout());
+        _leftComposite.setLayoutData(formData);
+
+        //Действия с атрибутами
+        formData = new FormData();
+        formData.left = new FormAttachment(_sash, 0);
+        formData.top = new FormAttachment(0, 0);
+        formData.right = new FormAttachment(100, 0);
+        formData.bottom = new FormAttachment(100, 0);
+        _rightComposite.setLayout(new FormLayout());
+        _rightComposite.setLayoutData(formData);
+
+    	/*
+    	
         GridData layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
         _mainComposite.setLayout(new GridLayout());
         _mainComposite.setLayoutData(layoutData);
@@ -161,100 +236,34 @@ public class SettingsAndConnectionForm {
         AutoFillSettingsBtnGD.minimumWidth = 150;
         AutoFillSettingsBtnGD.horizontalSpan = 2;
         AutoFillSettingsBtn.setLayoutData(AutoFillSettingsBtnGD);
+        */
     }
     
-    /**
-     * Только копируют в schedullePathText
-     * 
-     * @author Дамир
-     */
-    class OpenSchedule implements SelectionListener {
-            public void widgetSelected(SelectionEvent event) {
-                LOG.debug("Создаем Диалог На ОТКРЫТИЕ(!) файла, прописываем title, путь по умолчанию и фильтры. " +
-                		"Получаем String переменную результата и выводим её.");
-                LOG.info("Создаем Диалог На ОТКРЫТИЕ(!) файла, прописываем title, путь по умолчанию и фильтры. " +
-                        "Получаем String переменную результата и выводим её.");
-                    
-                    try {
-                        /**
-                         * Создаем Диалог На ОТКРЫТИЕ(!) файла, прописываем title, путь
-                         * по умолчанию и фильтры. Получаем String переменную результата
-                         * и выводим её.
-                         */
-                        FileDialog fd = new FileDialog(_mainComposite.getShell(), SWT.OPEN);
-                        fd.setText("Открыть расписание");
-                        fd.setFilterPath("C:/");
-                        String[] filterExt = {"*.xls"};
-                        fd.setFilterExtensions(filterExt);
-                        if ((GlobalStorage.selectedSchedule = fd.open()) != null) {
-                                schedullePathText.setText(GlobalStorage.selectedSchedule);
-                                GlobalStorage.put("selectedSchedule", GlobalStorage.selectedSchedule);
-                                try {
-                                        ExcelWorker.openSchedule(GlobalStorage.selectedSchedule);
-                                } catch (Exception e) {
-                                        status.setText(e.getLocalizedMessage());
-                                }
-                                status.setText("Расписание открыто");
-                        }
-                    } catch (Exception exception) {
-                        LOG.error(exception.getMessage());
-                    }
-                    
-            }
+    
 
-            public void widgetDefaultSelected(SelectionEvent event) {
-            }
-    }
-
-    /**
-     * Только копирует строку в loadPathText
-     * 
-     * @author Дамир
-     */
-    class OpenLoadOfProffs implements SelectionListener {
-            public void widgetSelected(SelectionEvent event) {
-                LOG.debug("OpenLoadOfProffs");
-                LOG.info("OpenLoadOfProffs");
-                try {
-                    /**
-                     * Создаем Диалог На ОТКРЫТИЕ(!) файла, прописываем title, путь
-                     * по умолчанию и фильтры. Получаем String переменную результата
-                     * и выводим её.
-                     */
-                    FileDialog fd = new FileDialog(_mainComposite.getShell(), SWT.OPEN);
-                    fd.setText("Открыть нагрузку");
-                    fd.setFilterPath("C:/");
-                    String[] filterExt = {"*.xls"};
-                    fd.setFilterExtensions(filterExt);
-                    if ((GlobalStorage.selectedProffsLoad = fd.open()) != null) {
-                            loadPathText.setText(GlobalStorage.selectedProffsLoad);
-                            GlobalStorage.put("selectedProffsLoad", GlobalStorage.selectedProffsLoad);
-                            try {
-                                    ExcelWorker.openLoad(GlobalStorage.selectedProffsLoad);
-                            } catch (Exception e) {
-                                status.setText(e.getLocalizedMessage());
-                            }
-                            status.setText("Нагрузка открыта");
-                    }
-                } catch (Exception exception) {
-                    LOG.error(exception.getMessage());
-                }
-            }
-
-            public void widgetDefaultSelected(SelectionEvent event) {
-            }
-    }
+    
 
     private void listeners() {
-        loadSchedulleBtn.addSelectionListener(new OpenSchedule());
-		loadLoadBtn.addSelectionListener(new OpenLoadOfProffs());
-		clearSchedulleBtn.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent arg0) {
-				schedullePathText.setText(GlobalStorage.selectedSchedule = "");
-				GlobalStorage.put("selectedSchedule", "");
-				GlobalStorage.matrix = null;
-			}
-		});
+//        loadSchedulleBtn.addSelectionListener(new OpenSchedule());
+//		loadLoadBtn.addSelectionListener(new OpenLoadOfProffs());
+//		clearSchedulleBtn.addSelectionListener(new SelectionAdapter() {
+//			public void widgetSelected(SelectionEvent arg0) {
+//				schedullePathText.setText(GlobalStorage.selectedSchedule = "");
+//				GlobalStorage.put("selectedSchedule", "");
+//				GlobalStorage.matrix = null;
+//			}
+//		});
+		
+		_sash.addListener(SWT.Selection, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+                if (event.detail != SWT.DRAG) {
+                    ((FormData) _sash.getLayoutData()).left = new FormAttachment(0, event.x);
+                    _sash.getParent().layout();
+                }
+            }
+        }
+        );
     }
 
     public void setFocus() {

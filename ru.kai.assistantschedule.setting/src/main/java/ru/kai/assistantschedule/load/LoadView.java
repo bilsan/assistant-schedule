@@ -1,32 +1,34 @@
-package ru.kai.assistantschedule.setting;
+package ru.kai.assistantschedule.load;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
-public class SettingView extends ViewPart {
+import ru.kai.assistantschedule.setting.SettingsAndConnectionForm;
 
-    public static final String ID = "ru.kai.assistantschedule.setting.view";
+public class LoadView extends ViewPart {
 
-    private ActivityPShelf shelf;
+    public static final String ID = "ru.kai.assistantschedule.load.view";
+
+    private ProfessorLoadTable table;
 
     /**
      * This is a callback that will allow us to create the viewer and initialize
      * it.
      */
     public void createPartControl(Composite parent) {
-        shelf = new ActivityPShelf(parent);
+	table = new ProfessorLoadTable(parent);
     }
 
     /**
      * Passing the focus request to the viewer's control.
      */
     public void setFocus() {
-    	shelf.setFocus();
+        table.setFocus();
     }
 
     @Override
     public void dispose() {
-    	shelf.dispose();
+        table.dispose();
         super.dispose();
     }
     

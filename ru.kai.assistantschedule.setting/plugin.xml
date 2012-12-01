@@ -8,7 +8,8 @@
             class="ru.kai.assistantschedule.setting.internal.SettingPerspective"
             icon="icons/settings.png"
             id="ru.kai.assistantschedule.setting.perspective"
-            name="Настройки">
+            name="Настройки"
+            sort="10">
       </perspective>
    </extension>
    <extension
@@ -17,6 +18,17 @@
             name="Настройки/Подключение"
             class="ru.kai.assistantschedule.setting.SettingView"
             id="ru.kai.assistantschedule.setting.view">
+      </view>
+      <view
+            class="ru.kai.assistantschedule.schedule.ScheduleView"
+            id="ru.kai.assistantschedule.schedule.view"
+            name="Расписание">
+      </view>
+      <view
+            class="ru.kai.assistantschedule.load.LoadView"
+            id="ru.kai.assistantschedule.load.view"
+            name="Нагрузка"
+            restorable="true">
       </view>
    </extension>
    <extension
@@ -27,7 +39,21 @@
                closeable="false"
                id="ru.kai.assistantschedule.setting.view"
                relationship="stack"
-               relative="mainFolder"
+               relative="leftFolder"
+               visible="true">
+         </view>
+         <view
+               closeable="false"
+               id="ru.kai.assistantschedule.schedule.view"
+               relationship="stack"
+               relative="rightFolder"
+               visible="true">
+         </view>
+         <view
+               closeable="false"
+               id="ru.kai.assistantschedule.load.view"
+               relationship="stack"
+               relative="rightFolder"
                visible="true">
          </view>
       </perspectiveExtension>
