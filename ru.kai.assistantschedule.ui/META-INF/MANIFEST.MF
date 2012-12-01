@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: UI
+Bundle-SymbolicName: ru.kai.assistantschedule.ui; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: ru.kai.assistantschedule.ui.internal.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ ru.kai.assistantschedule.logger;bundle-version="1.0.0",
+ org.eclipse.nebula.widgets.grid;bundle-version="1.0.0",
+ ru.kai.assistantschedule.core;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: ru.kai.assistantschedule.ui.forms
