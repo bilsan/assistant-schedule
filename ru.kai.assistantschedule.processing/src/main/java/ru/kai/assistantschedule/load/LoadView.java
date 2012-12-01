@@ -1,34 +1,33 @@
-package ru.kai.assistantschedule.processing;
+package ru.kai.assistantschedule.load;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
-public class ProcessingView extends ViewPart {
+public class LoadView extends ViewPart {
 
-    public static final String ID = "ru.kai.assistantschedule.processing.view";
+    public static final String ID = "ru.kai.assistantschedule.processing.load.view";
 
-    private ActivityPShelf shelf;
+    private ProfessorLoadTable table;
 
     /**
      * This is a callback that will allow us to create the viewer and initialize
      * it.
      */
     public void createPartControl(Composite parent) {
-	shelf = new ActivityPShelf(parent);
+	table = new ProfessorLoadTable(parent);
     }
 
     /**
      * Passing the focus request to the viewer's control.
      */
     public void setFocus() {
-	shelf.setFocus();
+        table.setFocus();
     }
 
     @Override
     public void dispose() {
-	// TODO Auto-generated method stub
-	shelf.dispose();
-	super.dispose();
+        table.dispose();
+        super.dispose();
     }
-
+    
 }

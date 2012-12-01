@@ -8,7 +8,8 @@
             class="ru.kai.assistantschedule.processing.internal.ProcessingPerspective"
             icon="icons/processing.png"
             id="ru.kai.assistantschedule.processing.perspective"
-            name="Обработки">
+            name="Обработки"
+            sort="20">
       </perspective>
    </extension>
    <extension
@@ -17,6 +18,16 @@
             name="Обработки"
             class="ru.kai.assistantschedule.processing.ProcessingView"
             id="ru.kai.assistantschedule.processing.view">
+      </view>
+      <view
+            class="ru.kai.assistantschedule.schedule.ScheduleView"
+            id="ru.kai.assistantschedule.processing.schedule.view"
+            name="Расписание">
+      </view>
+      <view
+            class="ru.kai.assistantschedule.load.LoadView"
+            id="ru.kai.assistantschedule.processing.load.view"
+            name="Нагрузка">
       </view>
    </extension>
    <extension
@@ -27,7 +38,21 @@
                closeable="false"
                id="ru.kai.assistantschedule.processing.view"
                relationship="stack"
-               relative="mainFolder"
+               relative="leftFolder"
+               visible="true">
+         </view>
+         <view
+               closeable="false"
+               id="ru.kai.assistantschedule.processing.schedule.view"
+               relationship="stack"
+               relative="rightFolder"
+               visible="true">
+         </view>
+         <view
+               closeable="false"
+               id="ru.kai.assistantschedule.processing.load.view"
+               relationship="stack"
+               relative="rightFolder"
                visible="true">
          </view>
       </perspectiveExtension>

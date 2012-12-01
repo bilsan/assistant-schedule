@@ -26,6 +26,7 @@ import java.util.GregorianCalendar;
  * Date: 31.10.12
  * Time: 14:24
  */
+@Deprecated
 public class ProcessingForm {
 
     private CTabFolder folder;
