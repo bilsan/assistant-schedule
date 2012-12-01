@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Reports
+Bundle-SymbolicName: ru.kai.assistantschedule.reports; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: ru.kai.assistantschedule.reports.internal.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.nebula.widgets.pshelf;bundle-version="1.0.0",
+ ru.kai.assistantschedule.logger;bundle-version="1.0.0",
+ ru.kai.assistantschedule.status;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

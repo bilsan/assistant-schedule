@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="ru.kai.assistantschedule.reports.internal.ReportsPerspective"
+            icon="icons/reports.png"
+            id="ru.kai.assistantschedule.reports.perspective"
+            name="Отчеты"
+            sort="30">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="Отчеты"
+            class="ru.kai.assistantschedule.reports.ReportsView"
+            id="ru.kai.assistantschedule.reports.view">
+      </view>
+      <view
+            class="ru.kai.assistantschedule.reports.professorsSchedule.GeneralView"
+            id="ru.kai.assistantschedule.reports.professorsSchedule.generalView"
+            name="Общее расписание преподователей">
+      </view>
+      <view
+            class="ru.kai.assistantschedule.reports.professorsSchedule.IndividualView"
+            id="ru.kai.assistantschedule.reports.professorsSchedule.individualView"
+            name="Частное расписание преподователей">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="ru.kai.assistantschedule.reports.perspective">
+         <view
+               closeable="false"
+               id="ru.kai.assistantschedule.reports.view"
+               relationship="stack"
+               relative="leftFolder"
+               visible="true">
+         </view>
+         <view
+               closeable="false"
+               id="ru.kai.assistantschedule.reports.professorsSchedule.generalView"
+               relationship="stack"
+               relative="rightFolder"
+               visible="true">
+         </view>
+         <view
+               closeable="false"
+               id="ru.kai.assistantschedule.reports.professorsSchedule.individualView"
+               relationship="stack"
+               relative="rightFolder"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>
