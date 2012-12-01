@@ -51,6 +51,7 @@ public class ApplicationToolbar extends ContributionItem {
 
                 String sort1 = pd1.getConfigElement().getAttribute("sort");
                 String sort2 = pd2.getConfigElement().getAttribute("sort");
+                LOG.debug(String.format("sort1 = %s, sort2 = %s", sort1, sort2));
                 if (sort1 == null || sort1.isEmpty()) return 1;
                 if (sort2 == null || sort2.isEmpty()) return -1;
                 return sort1.compareTo(sort2);
@@ -62,6 +63,9 @@ public class ApplicationToolbar extends ContributionItem {
         for (IPerspectiveDescriptor perspectiveDescriptor : perspectiveDescriptors) {
 
             PerspectiveDescriptor pd = (PerspectiveDescriptor) perspectiveDescriptor;
+            
+            LOG.info("PerspectiveDescriptor pd = {}", pd.getLabel());
+            
             String menuVisible = pd.getConfigElement().getAttribute("menuVisible");
 
             if (!pd.getConfigElement().getAttribute("class").startsWith("ru.kai")) continue;

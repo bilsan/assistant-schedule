@@ -11,6 +11,7 @@ Require-Bundle: org.eclipse.ui,
  ru.kai.assistantschedule.status;bundle-version="1.0.0",
  ru.kai.assistantschedule.core;bundle-version="1.0.0",
  ru.kai.assistantschedule.libs;bundle-version="1.0.0",
- ru.kai.assistantschedule.logger;bundle-version="1.0.0"
+ ru.kai.assistantschedule.logger;bundle-version="1.0.0",
+ ru.kai.assistantschedule.reports;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
