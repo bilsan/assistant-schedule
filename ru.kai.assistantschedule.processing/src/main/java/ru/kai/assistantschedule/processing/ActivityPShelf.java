@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 import ru.kai.assistantschedule.core.ExcelWorker;
 import ru.kai.assistantschedule.core.GlobalStorage;
 import ru.kai.assistantschedule.core.calendar.SemestrBuilder;
-import ru.kai.assistantschedule.core.exceptions.SheduleIsNotOpenedException;
+import ru.kai.assistantschedule.core.exceptions.ScheduleIsNotOpenedException;
 import ru.kai.assistantschedule.status.open.IStatus;
 import ru.kai.assistantschedule.status.open.StatusImpl;
 
@@ -174,11 +174,12 @@ public class ActivityPShelf {
         _generateScheduleBtn.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent arg0) {
                 SemestrBuilder SB = new SemestrBuilder(GlobalStorage.beginingOfSemestr, GlobalStorage.endOfSemestr);
-                try {
-                    ExcelWorker.GenerateSchedule(SB);
-                } catch (SheduleIsNotOpenedException e) {
-                    status.setText("Расписание не открыто! Обработка отменена...");
-                }
+                //@ FIXME: Функцию нужно переписать. Поэтому закомментил 
+                //try {
+                //    ExcelWorker.GenerateSchedule(SB);
+                //} catch (ScheduleIsNotOpenedException e) {
+                //    status.setText("Расписание не открыто! Обработка отменена...");
+                //}
             }
         });
 
