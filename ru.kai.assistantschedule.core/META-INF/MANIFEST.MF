@@ -11,6 +11,7 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: ru.kai.assistantschedule.core;uses:="ru.kai.assistantschedule.core.calendar",
+ ru.kai.assistantschedule.core.cache,
  ru.kai.assistantschedule.core.calendar,
  ru.kai.assistantschedule.core.exceptions,
  ru.kai.assistantschedule.core.model.professorLoad,

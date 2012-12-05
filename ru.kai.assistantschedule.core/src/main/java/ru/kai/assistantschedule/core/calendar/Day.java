@@ -6,10 +6,14 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import ru.kai.assistantschedule.core.cache.LessonType;
+import ru.kai.assistantschedule.core.cache.ScheduleEntry;
+import ru.kai.assistantschedule.core.cache.Time;
+
 public class Day {
 	private Calendar dateOfTheDay = new GregorianCalendar();
 	public final String dateStr;
-	public List<Class> classes = new ArrayList<Class>();
+	public List<ScheduleEntry> classes = new ArrayList<ScheduleEntry>();
 	public int DayOfWeek;
 	
 	public Day(Date date, int aDayOfWeek){
@@ -23,8 +27,9 @@ public class Day {
 		return dateOfTheDay.getTime().toString();
 	}
 
-	public void addClass(Time t, String audit, String disc, LessonType FoC, String prepod, String kaf, String groups ){
-		classes.add(new Class(t, audit, disc, FoC, groups, prepod, kaf));
+	//@ FIXME: Пока закоментил. Нужно переосмыслить и сделать=)
+	public void addClass(Time time, String audit, String disc, LessonType lesType, String prepod, String kaf, String groups ){
+		//classes.add(new ScheduleEntry(groups, null, time, null, disc, lesType, audit, null, null, prepod, kaf ));
+		//classes.add(new Class(audit, prepod, kaf));
 	}
-
 }

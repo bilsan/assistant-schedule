@@ -1,17 +1,17 @@
 package ru.kai.assistantschedule.core.calendar;
 
+import ru.kai.assistantschedule.core.cache.LessonType;
+import ru.kai.assistantschedule.core.cache.Time;
+
 public class Class {
-	
-	
-	public Class(Time time, String lectureRoom, String discipline, 
-			LessonType lessonType, String group, String professor, String department){
-		this.time = time;
+	public Class(Time t, String lectureRoom, String disc, LessonType lessonType, String group, String prep, String kafedra){
+		this.time = t;
 		this.lectureRoom = lectureRoom;
-		this.discipline = discipline;
+		this.discipline = disc;
 		this.lessonType = lessonType;
 		this.group = group;
-		this.professor = professor;
-		this.department = department;
+		this.professor = prep;
+		this.department = kafedra;
 	}
 	
 	public Time time;
