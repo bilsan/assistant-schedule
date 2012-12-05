@@ -6,9 +6,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ru.kai.assistantschedule.core.cache.LessonType;
+import ru.kai.assistantschedule.core.cache.Time;
 import ru.kai.assistantschedule.core.calendar.Class;
-import ru.kai.assistantschedule.core.calendar.LessonType;
-import ru.kai.assistantschedule.core.calendar.Time;
 import ru.kai.assistantschedule.core.model.professorLoad.ProfessorLoadContentProvider;
 import ru.kai.assistantschedule.core.model.professorLoad.ProfessorLoadLabelProvider;
 import ru.kai.assistantschedule.ui.forms.AbstractProfessorsLoadTable;
