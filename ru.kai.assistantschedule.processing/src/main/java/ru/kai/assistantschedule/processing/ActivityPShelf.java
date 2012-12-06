@@ -102,14 +102,6 @@ public class ActivityPShelf {
 		SWT.FLAT);
 	_findProfessorsBtn.setText("Поиск преподователей");
 	_findProfessorsBtn.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-	_findProfessorsBtn.addSelectionListener(new SelectionAdapter() {
-
-	    @Override
-	    public void widgetSelected(SelectionEvent e) {
-//		openShedule();
-	    }
-
-	});
 
 	//==============================================================
 
