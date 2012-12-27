@@ -11,6 +11,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
+import ru.kai.assistantschedule.core.cache.ScheduleEntry;
 import ru.kai.assistantschedule.core.calendar.Class;
 
 public class ScheduleLabelProvider extends LabelProvider implements
@@ -52,23 +53,56 @@ public class ScheduleLabelProvider extends LabelProvider implements
 	@Override
 	public String getColumnText(Object element, int columnIndex) {
 		// Выводим данные в колонках
-		Class classRow = (Class) element;
+		ScheduleEntry classRow = (ScheduleEntry) element;
 		
 		switch (columnIndex) {
 			case 0:
-				return classRow.group;
+				return classRow.groupName;
 			case 1:
-				return classRow.time.toString();
+				switch (classRow.day) {
+					case mon: return "пн";
+					case tue: return "вт";
+					case wed: return "ср";
+					case thu: return "чт";
+					case fri: return "пт";
+					case sat: return "сб";
+					default: return "";
+				}
 			case 2:
-				return classRow.discipline;
+				switch (classRow.time) {
+					case at08_00: return "8:00";
+					case at09_40: return "9:40";
+					case at11_30: return "11:30";
+					case at13_10: return "13:10";
+					case at15_00: return "15:00";
+					case at16_40: return "16:40";
+					case at18_15: return "18:15";
+					case at19_45: return "19:45";
+					default: return "";
+				}
 			case 3:
-				return classRow.lessonType.toString();
+				return classRow.date;
 			case 4:
-				return classRow.lectureRoom;
+				return classRow.discipline;
 			case 5:
-				return classRow.professor;
+				switch (classRow.lessonType) {
+					case LEC: return "лек";
+					case PRAC: return "пр";
+					case LABS: return "л.р.";
+					case IZ: return "и.з.";
+					case OTHER: return "";
+					default: return "";
+				}
 			case 6:
-				return classRow.department;
+				return classRow.classRoom;
+			case 7:
+				return classRow.building;
+			case 8:
+				return classRow.doljnost;
+			case 9:
+				return classRow.prepodavatel;
+			case 10:
+				return classRow.kafedra;
 			default:
 				return "";
 		}
