@@ -7,14 +7,14 @@ public class ScheduleView extends ViewPart {
 
     public static final String ID = "ru.kai.assistantschedule.processing.schedule.view";
 
-    private ScheduleTable scheduleTable;
+    private ScheduleTableProcessing scheduleTable;
 
     /**
      * This is a callback that will allow us to create the viewer and initialize
      * it.
      */
     public void createPartControl(Composite parent) {
-    	scheduleTable = new ScheduleTable(parent);
+    	scheduleTable = new ScheduleTableProcessing(parent);
     }
 
     /**
