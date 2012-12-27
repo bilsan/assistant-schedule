@@ -18,6 +18,8 @@ import org.slf4j.LoggerFactory;
 
 import ru.kai.assistantschedule.core.ExcelWorker;
 import ru.kai.assistantschedule.core.GlobalStorage;
+import ru.kai.assistantschedule.core.MainCommand;
+import ru.kai.assistantschedule.core.cache.FirstLevelCache;
 import ru.kai.assistantschedule.status.open.IStatus;
 import ru.kai.assistantschedule.status.open.StatusImpl;
 
@@ -127,6 +129,10 @@ public class ActivityPShelf {
 			GlobalStorage.selectedSchedule);
 		try {
 		    ExcelWorker.openSchedule(GlobalStorage.selectedSchedule);
+		    FirstLevelCache firstLevelCache = new FirstLevelCache();
+		    firstLevelCache.readFromSheet();
+		    LOG.debug("firstLevelCache.getEntries().size() = "+firstLevelCache.getEntries().size());
+		    MainCommand.setFirstLevelCache(firstLevelCache);
 		} catch (Exception e) {
 		    status.setText(e.getLocalizedMessage());
 		}
