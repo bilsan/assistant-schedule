@@ -1,5 +1,7 @@
 package ru.kai.assistantschedule.ui.forms;
 
+import java.util.List;
+
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
@@ -15,9 +17,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import ru.kai.assistantschedule.core.calendar.Class;
+import ru.kai.assistantschedule.core.IScheduleTable;
+import ru.kai.assistantschedule.core.cache.ScheduleEntry;
 
-public abstract class AbstractScheduleTable {
+public abstract class AbstractScheduleTable implements IScheduleTable {
 
     private GridTableViewer v;
 
@@ -108,7 +111,7 @@ public abstract class AbstractScheduleTable {
 	column.setWidth(100);
 	column.setText("Кафедра");
 	
-	v.setInput(getInput());
+//	v.setInput(getInput());
 	v.getGrid().setLinesVisible(true);
 	v.getGrid().setHeaderVisible(true);
 	v.getGrid().setRowHeaderVisible(true);
@@ -117,12 +120,15 @@ public abstract class AbstractScheduleTable {
     }
     
     protected abstract void listeners();
-    
-    protected abstract Class[] getInput();
 
     protected abstract IBaseLabelProvider getLabelProvider();
 
     protected abstract IContentProvider getContentProvider();
+    
+    @Override
+	public void setInput(List<ScheduleEntry> elements) {
+    	v.setInput(elements);
+	}
     
     public void setFocus() {
 	composite.setFocus();

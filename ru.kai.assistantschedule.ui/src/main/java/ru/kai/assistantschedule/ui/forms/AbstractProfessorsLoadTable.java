@@ -212,7 +212,6 @@ public abstract class AbstractProfessorsLoadTable {
 	column.setWidth(100);
 	column.setText("Контр.раб.");
 	
-	v.setInput(getInput());
 	v.getGrid().setLinesVisible(true);
 	v.getGrid().setHeaderVisible(true);
 	v.getGrid().setRowHeaderVisible(true);
